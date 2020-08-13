@@ -1,0 +1,25 @@
+  
+{% extends "auctions/layout.html" %}
+{% block body %}
+<h2 class="text-center">Watchlist</h2>
+
+    {% if present %}
+    {% for listing in product_list %}
+
+<div class="text-center">
+            <p class="text">{{listing.title}}</p>
+            <a href="{% url 'viewlisting' listing.id %}"> <img class="image" src="{{listing.image_link}}" alt="click on the image to view the listing"></a>
+            <h5>Click on the image to view the listing's other details.</h5>
+                <p> Current Bid Price: {{listing.starting_bid}}</p>
+</div>
+    {% endfor %}
+    {% else %}
+
+       <h4 class="text-center"> OOPs. No Listings Found.   <a href="{% url 'activelisting'  %}" class="hello">Click here to add a listing.</a></h4>  
+
+{% endif %}
+
+
+
+
+{% endblock %}

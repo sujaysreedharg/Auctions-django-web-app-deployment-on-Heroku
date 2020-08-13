@@ -1,0 +1,19 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+{% if not products %}
+<br>
+<h3 class = "text-center">You haven't won any listings so far.</h3>
+{% else %}
+
+{% for product in products %}
+            <p class="text-center">Seller : {{product.seller}} <br> </p>
+            <!-- winner -->
+            <p class="text-center">Winner : {{product.winner}} <br> </p>
+            <!-- Price -->
+            <p class="text-center">Bid Price : {{product.finalbid}} <br> </p>
+
+    <!-- Card Regular -->
+{% endfor %}
+{% endif %}
+
+{% endblock %}

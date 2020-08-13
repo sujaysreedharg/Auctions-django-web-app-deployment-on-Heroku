@@ -1,0 +1,93 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+
+    <div class="text-center" style="padding: 3% 10%;">
+
+        <br>
+        <br>
+        <h1><strong>{{product.title}}</strong></h1> <br>
+        <br>
+        {% if message %}
+        <div class="alert alert-{{msg_type}}">{{ message }}</div>
+        {% endif %}
+        <img src="{{product.image_link}}" alt="indeximage"  class="image"> <br> <br> <br> 
+        <p class="lead" align="justify"><strong>Description : </strong> {{product.description}}</p>  
+        <p class="lead" align="justify"><strong>Category : </strong>{{product.category}}</p>
+        <p class="lead" align="justify"><strong>Current Bid Price : </strong>{{product.starting_bid}}$</p>
+        <p class="lead" align="justify"><strong>Seller : </strong>{{product.seller}}</p>
+        <p class="lead" align="justify"><strong>Created on : </strong>{{product.created_at}}</p>
+        <br>
+        {% if user.username != product.seller %}
+            <p class="lead" align="justify"><strong>Place Bid : </strong></p>
+            <form action="{% url 'viewlisting' product.id %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" type="text" name="newbid" placeholder="Bid Value">
+                </div>
+                <p align="justify"><input class="btn btn-primary" type="submit" value="Submit"></p>
+            </form>
+        {% endif %}
+        {% if added %}
+            <!-- <input type="button" class="btn btn-danger btn-lg" name="remove" placeholder="Remove from Watchlist"> -->
+            <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-primary btn-lg" name="remove">Remove from Watchlist</a>
+        {% else %}
+            <!-- <input type="button" class="btn btn-success btn-lg" name="addto" placeholder="Add to Watchlist"> -->
+            <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-primary btn-lg" name="addto">Add to Watchlist</a>
+        {% endif %}
+        {% if user.username == product.seller %}
+        <form class="pull-right mt-5"
+              action="{% url 'closebid' product.id  %}"
+              method="post">
+            {% csrf_token %}
+            <span class="input-group-prepend">
+                <button class="btn btn-danger close-button"
+                        type="submit"
+                        name=close
+                        class="btn btn-primary">Close Bid</button>
+            </span>
+            </form>
+   
+        {% endif %}
+        
+
+    <div class="col-sm col">
+        <div class="comment-section ">
+            <h3>Comments</h3>
+            {% if user.username != product.seller %}
+            <form action="{% url 'addcomment' product.id %}" method="POST">
+                {% csrf_token %}
+                <div class="comment">
+                    <input class="form-control"
+                           type="text"
+                           name="comment"
+                           placeholder="Add comment, be kind, be humble.">
+                    <span class="input-group-prepend">
+                        <input type="submit"
+                               class="btn btn-primary" />
+                    </span>
+                </div>
+                {% endif %}
+        
+                {% if comments %}
+    
+                    {% for comment in comments %}
+                        <br>
+                        <!-- Grid row -->
+                        <div class="card text-left">
+                        <h5 class="card-header h5">{{comment.user}}</h5>
+                        <div class="card-body">
+                            <!-- <h5 class="card-title">Rating :</h5> -->
+                            <p class="lead">{{comment.content}}</p>
+                        </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="text-center">
+                        <!-- Text -->
+                        <br> <br> 
+                        <p class="lead">No Comments Yet</p> 
+                    </div>
+                {% endif %}
+{% endblock %}
