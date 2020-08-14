@@ -12,6 +12,19 @@
         {% if message %}
         <div class="alert alert-{{msg_type}}">{{ message }}</div>
         {% endif %}
+        <head>
+            <style>
+            image{
+    width: 50%
+    box-shadow: 35px 0px 52px 11px rgba(0,0,0,0.59);
+    border-color: black;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+}
+            </style>
+        </head>
         <img src="{{product.image_link}}" alt="indeximage"  class="image"> <br> <br> <br> 
         <p class="lead" align="justify"><strong>Description : </strong> {{product.description}}</p>  
         <p class="lead" align="justify"><strong>Category : </strong>{{product.category}}</p>
