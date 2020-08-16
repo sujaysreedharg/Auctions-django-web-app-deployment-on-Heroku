@@ -6,41 +6,41 @@
         <div class="alert alert-danger">{{ message }}</div>
     {% endif %}
 
-    <!-- Jumbotron -->
+  
     <div class="jumbotron text-center">
-        <!-- Title -->
+      
         <h2 class="card-title h2">ACTIVE LISTINGS</h2>
-        <!-- Subtitle -->
+      
         <br>
-        <!-- Grid row -->
+       
         <div class="row d-flex justify-content-center">
-            <!-- Grid column -->
+           
             <div class="col-xl-7 pb-2">
                 {% if empty %}
                     <div>No Listing Found</div>
                 {% else %}
                     {% for product in products %}
                         <br>
-                        <!-- Card Regular -->
+                      
                         <div>
-                            <!-- Card image -->
+                           
                             <div class="view view-cascade overlay " >
                                 <img class="image" src="{{product.image_link}}" alt="Card image cap" style="height: 200px;">
                                 <a>
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
                             </div>
-                            <!-- Card content -->
+                          
                             <div class="text-center" style="padding: 3% 10%;">
-                                <!-- Title -->
+                          
                                 <h4 class="title"><strong>{{product.title}}</strong></h4>
-                                <!-- Subtitle -->
+                              
                                 <h6 class="font-weight-bold indigo-text py-2">{{product.category}}</h6>
-                                <!-- Text -->
+                        
                                 <p class="">{{product.description}} <br> </p>
-                                <!-- Price -->
+                           
                                 <p class="font-weight-bold">{{product.starting_bid}}$ <br> </p>
-                                <!-- Button -->
+                       
                                 <a href="{% url 'viewlisting' product.id %}" class="btn btn-primary">View</a>
                             </div>
                             <!-- Card footer -->
@@ -48,11 +48,11 @@
                                 {{product.created_at}}
                             </div>
                         </div>
-                        <!-- Card Regular -->
+                  
                     {% endfor %}
                 {% endif %}
             </div>
         </div>
     </div>
-    <!-- Jumbotron -->
+ 
 {% endblock %}
