@@ -43,10 +43,10 @@
             </form>
         {% endif %}
         {% if added %}
-            <!-- <input type="button" class="btn btn-danger btn-lg" name="remove" placeholder="Remove from Watchlist"> -->
+          
             <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-primary btn-lg" name="remove">Remove from Watchlist</a>
         {% else %}
-            <!-- <input type="button" class="btn btn-success btn-lg" name="addto" placeholder="Add to Watchlist"> -->
+        
             <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-primary btn-lg" name="addto">Add to Watchlist</a>
         {% endif %}
         {% if user.username == product.seller %}
