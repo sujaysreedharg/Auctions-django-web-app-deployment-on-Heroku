@@ -52,7 +52,7 @@ def register(request):
                 "message": "Passwords must match."
             })
 
-        # Attempt to create new user
+       
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
@@ -84,7 +84,7 @@ def createlisting(request):
     else:
         return render(request, "auctions/createlisting.html")
 
-# view for showing the active lisitngs
+
 @login_required(login_url='/login')
 def activelisting(request):
     # list of products available
@@ -152,7 +152,7 @@ def addtowatchlist(request, product_id):
             listingid=product_id, user=request.user.username)
     wl = Watchlistssme.objects.filter(
         listingid=product_id, user=request.user.username)
-    # checking if it is already added to the watchlist
+
     if wl:
         wl.delete()
         product = Listing.objects.get(id=product_id)
