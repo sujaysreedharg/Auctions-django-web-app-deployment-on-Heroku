@@ -16,9 +16,9 @@
 }
             </style>
         </head>
-  <!-- Card Regular -->
+ 
   <div class="card card-cascade" >
-      <!-- Card image -->
+   
       <div class="view view-cascade overlay " >
           <img class="image" src="{{product.image_link}}" alt="Card image cap" >
           <a>
@@ -27,22 +27,22 @@
       </div>
       <!-- Card content -->
       <div class="card-body card-body-cascade text-center">
-          <!-- Title -->
+        
           <h4 class="card-title"><strong>{{product.title}}</strong></h4>
-          <!-- Subtitle -->
+       
           <h6 class="font-weight-bold indigo-text py-2">{{product.category}}</h6>
-          <!-- Text -->
+       
           <p class="lead">Seller : {{product.seller}} <br> </p>
-          <!-- Text -->
+        
           <p class="">{{product.description}} <br> </p>
-          <!-- Price -->
+        
           <p class="font-weight-bold">{{product.starting_bid}}$ <br> </p>
-          <!-- Button -->
+        
           <a href="{% url 'viewlisting' product.id %}" class="btnnew">View</a>
       </div>
-      <!-- Card footer -->
+ 
   </div>
-  <!-- Card Regular -->
+
 
 </div>
 </div>
