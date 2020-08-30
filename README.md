@@ -1,4 +1,4 @@
-# Auctions-django-web-app-deployment-on-Heroku
+# Auctions django web app deployment on Heroku
 
 
 
